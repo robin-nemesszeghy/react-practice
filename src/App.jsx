@@ -2,7 +2,7 @@ import "./App.css";
 import Todo from "./components/Todo";
 import Title from "./components/Title";
 import Modal from "./components/Modal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import Counter from "./components/Counter";
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
   function cancelModal() {
     setShowModal(false);
   }
+
+  useEffect(() => {}, []);
 
   return (
     <>
