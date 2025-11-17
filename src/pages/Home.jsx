@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import User from "../components/User";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -17,11 +19,20 @@ function Home() {
     }, 500);
   }, []);
 
-  // return <h1>{users.length > 0 ? users[0].name : null}</h1>;
-  // return <h1>{users.length > 0 && users[0].name : null}</h1>;
+  const pixels = "3px";
+
   return (
     <div>
-      {users.length > 0 ? <h1>{users[0]?.name}</h1> : <h1>Loading...</h1>}
+      {users.map((user) => (
+        <Link to={`/users/${user.id}`} key={user.id}>
+          <User
+            id={user.id}
+            name={user.name}
+            email={user.email}
+            username={user.username}
+          />
+        </Link>
+      ))}
     </div>
   );
 }
